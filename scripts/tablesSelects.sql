@@ -15,7 +15,7 @@ from livro
 -- SELECT LEITORES
 select
 	nome,
-    data_nascimento
+    data_nascimento as nascimento
 from leitor;
 
 

@@ -15,12 +15,12 @@
 			$conexao = RetornaConexao();
 
 			$nome = 'nome';
-			$data_nascimento = 'data_nascimento';
+			$nascimento = 'nascimento';
 
 			$sql = '
 				select
 					nome,
-					data_nascimento
+					data_nascimento as nascimento
 				from leitor
 			';
 
@@ -32,7 +32,7 @@
 				'<table style="width: 100%;">' .
 				'    <tr style="text-align: left;">' .
 				'        <th>' . $nome . '</th>' .
-				'        <th>' . $data_nascimento . '</th>' .
+				'        <th>' . $nascimento . '</th>' .
 				'    </tr>';
 
 			echo $cabecalho;
@@ -43,7 +43,7 @@
 					echo '<tr>';
 
 					echo '<td>' . $registro[$nome] . '</td>' .
-						'<td>' . $registro[$data_nascimento] . '</td>';
+						'<td>' . $registro[$nascimento] . '</td>';
 					echo '</tr>';
 				}
 				echo '</table>';
