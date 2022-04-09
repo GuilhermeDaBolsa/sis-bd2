@@ -2,12 +2,15 @@ INSERT INTO autor VALUES(0, 'Leo', STR_TO_DATE('10/05/2000', '%d/%m/%Y'));
 INSERT INTO autor VALUES(0, 'Art', STR_TO_DATE('02/02/2001', '%d/%m/%Y'));
 INSERT INTO autor VALUES(0, 'Gio', STR_TO_DATE('08/10/2000', '%d/%m/%Y'));
 
+
 INSERT INTO editora VALUES(0, 'Annapurna', STR_TO_DATE('01/12/2016', '%d/%m/%Y'));
+
 
 INSERT INTO genero VALUES(0, 'Terror');
 INSERT INTO genero VALUES(0, 'Aventura');
 INSERT INTO genero VALUES(0, 'Conto');
 INSERT INTO genero VALUES(0, 'Filosofia');
+
 
 INSERT INTO livro VALUES(
 	0,
@@ -38,3 +41,29 @@ INSERT INTO livro VALUES(
     1,
     4
  );
+
+ 
+INSERT INTO leitor VALUES(0, 'Leo', STR_TO_DATE('10/05/2000', '%d/%m/%Y'));
+INSERT INTO leitor VALUES(0, 'Art', STR_TO_DATE('02/02/2001', '%d/%m/%Y'));
+INSERT INTO leitor VALUES(0, 'Gio', STR_TO_DATE('08/10/2000', '%d/%m/%Y'));
+
+
+INSERT INTO leitura VALUES(0, 1, 2, STR_TO_DATE('06/12/2006', '%d/%m/%Y'), STR_TO_DATE('04/01/2007', '%d/%m/%Y'));
+INSERT INTO leitura VALUES(0, 2, 3, STR_TO_DATE('06/12/2006', '%d/%m/%Y'), STR_TO_DATE('27/12/2006', '%d/%m/%Y'));
+INSERT INTO leitura VALUES(0, 3, 1, STR_TO_DATE('06/12/2006', '%d/%m/%Y'), STR_TO_DATE('02/01/2007', '%d/%m/%Y'));
+
+
+INSERT INTO amizade VALUES(1, 2);
+INSERT INTO amizade VALUES(1, 3);
+INSERT INTO amizade VALUES(2, 1);
+INSERT INTO amizade VALUES(2, 3);
+INSERT INTO amizade VALUES(3, 1);
+INSERT INTO amizade VALUES(3, 2);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
