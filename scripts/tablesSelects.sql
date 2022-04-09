@@ -2,7 +2,7 @@
 select
 	titulo,
     autor.nome as autor,
-    data_publicacao,
+    data_publicacao as publicacao,
     editora.nome as editora,
     genero.nome as genero,
     classificacao_etaria as classificacao

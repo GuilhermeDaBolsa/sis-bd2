@@ -16,7 +16,7 @@
 
 			$titulo = 'titulo';
 			$autor = 'autor';
-			$data_publicacao = 'data_publicacao';
+			$publicacao = 'publicacao';
 			$editora = 'editora';
 			$genero = 'genero';
 			$classificacao = 'classificacao';
@@ -25,7 +25,7 @@
 				select
 					titulo,
 					autor.nome as autor,
-					data_publicacao,
+					data_publicacao as publicacao,
 					editora.nome as editora,
 					genero.nome as genero,
 					classificacao_etaria as classificacao
@@ -44,7 +44,7 @@
 				'    <tr style="text-align: left;">' .
 				'        <th>' . $titulo . '</th>' .
 				'        <th>' . $autor . '</th>' .
-				'        <th>' . $data_publicacao . '</th>' .
+				'        <th>' . $publicacao . '</th>' .
 				'        <th>' . $editora . '</th>' .
 				'        <th>' . $genero . '</th>' .
 				'        <th>' . $classificacao . '</th>' .
@@ -59,7 +59,7 @@
 
 					echo '<td>' . $registro[$titulo] . '</td>' .
 						'<td>' . $registro[$autor] . '</td>' .
-						'<td>' . $registro[$data_publicacao] . '</td>' .
+						'<td>' . $registro[$publicacao] . '</td>' .
 						'<td>' . $registro[$editora] . '</td>' .
 						'<td>' . $registro[$genero] . '</td>' .
 						'<td>' . $registro[$classificacao] . '</td>';
