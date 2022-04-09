@@ -29,4 +29,16 @@ from amizade
 order by follower;
 
 
+-- SELECT LEITURAS
+select
+	leitor.nome as leitor,
+    livro.titulo as livro,
+    leitura.data_inicio as inicio,
+    leitura.data_fim as fim
+from leitura
+	inner join leitor on leitura.id_leitor = leitor.id
+    inner join livro on leitura.id_livro = livro.id
+order by leitor.id;
+
+
 
