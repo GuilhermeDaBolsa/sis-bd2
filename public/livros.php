@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Updock&display=swap" rel="stylesheet">
+
+<style>
+	.darkMode {
+		background-color: #202020;
+        color: #dddddd;
+	}
+	.whiteMode {
+		background-color: #dddddd;
+        color: #202020;
+	}
+	.pageTitle {
+		text-align: center;
+		font-family: 'Updock', cursive;
+		font-size: 4rem;
+		font-weight: bold;
+	}
+	.pillText {
+		border-radius: 24px;
+		padding: 6px 12px;
+	}
+</style>
+
 </head>
 	
-<body>
+<body class="darkMode">
     <div style="max-width: 800px; margin: auto;">
-        <h1>Bibliófilo's</h1>
+        <h1 class="pageTitle">Bibliófilo's</h1>
 
         <h2>Livros</h2>
+		<hr/>
 
         <?php
 			require 'mysql_server.php';
@@ -41,13 +67,13 @@
 
 			$cabecalho =
 				'<table style="width: 100%;">' .
-				'    <tr style="text-align: left;">' .
-				'        <th>' . $titulo . '</th>' .
-				'        <th>' . $autor . '</th>' .
-				'        <th>' . $publicacao . '</th>' .
-				'        <th>' . $editora . '</th>' .
-				'        <th>' . $genero . '</th>' .
-				'        <th>' . $classificacao . '</th>' .
+				'    <tr style="text-align: left; height: 36px; vertical-align: baseline;">' .
+				'        <th><span class="whiteMode pillText">' . $titulo . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $autor . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $publicacao . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $editora . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $genero . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $classificacao . '</span></th>' .
 				'    </tr>';
 
 			echo $cabecalho;
@@ -57,12 +83,12 @@
 				while ($registro = mysqli_fetch_assoc($resultado)) {
 					echo '<tr>';
 
-					echo '<td>' . $registro[$titulo] . '</td>' .
-						'<td>' . $registro[$autor] . '</td>' .
-						'<td>' . $registro[$publicacao] . '</td>' .
-						'<td>' . $registro[$editora] . '</td>' .
-						'<td>' . $registro[$genero] . '</td>' .
-						'<td>' . $registro[$classificacao] . '</td>';
+					echo '<td style="padding-left: 8px;">' . $registro[$titulo] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$autor] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$publicacao] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$editora] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$genero] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$classificacao] . '</td>';
 					echo '</tr>';
 				}
 				echo '</table>';

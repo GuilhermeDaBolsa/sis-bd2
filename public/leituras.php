@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Updock&display=swap" rel="stylesheet">
+
+<style>
+	.darkMode {
+		background-color: #202020;
+        color: #dddddd;
+	}
+	.whiteMode {
+		background-color: #dddddd;
+        color: #202020;
+	}
+	.pageTitle {
+		text-align: center;
+		font-family: 'Updock', cursive;
+		font-size: 4rem;
+		font-weight: bold;
+	}
+	.pillText {
+		border-radius: 24px;
+		padding: 6px 12px;
+	}
+</style>
+
 </head>
 	
-<body>
+<body class="darkMode">
     <div style="max-width: 800px; margin: auto;">
-        <h1>Bibliófilo's</h1>
+        <h1 class="pageTitle">Bibliófilo's</h1>
 
         <h2>Leituras</h2>
+		<hr/>
 
         <?php
 			require 'mysql_server.php';
@@ -37,11 +63,11 @@
 
 			$cabecalho =
 				'<table style="width: 100%;">' .
-				'    <tr style="text-align: left;">' .
-				'        <th>' . $leitor . '</th>' .
-				'        <th>' . $livro . '</th>' .
-				'        <th>' . $inicio . '</th>' .
-				'        <th>' . $fim . '</th>' .
+				'    <tr style="text-align: left; height: 36px; vertical-align: baseline;">' .
+				'        <th><span class="whiteMode pillText">' . $leitor . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $livro . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $inicio . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $fim . '</span></th>' .
 				'    </tr>';
 
 			echo $cabecalho;
@@ -51,10 +77,10 @@
 				while ($registro = mysqli_fetch_assoc($resultado)) {
 					echo '<tr>';
 
-					echo '<td>' . $registro[$leitor] . '</td>' .
-						'<td>' . $registro[$livro] . '</td>' .
-						'<td>' . $registro[$inicio] . '</td>' .
-						'<td>' . $registro[$fim] . '</td>';
+					echo '<td style="padding-left: 8px;">' . $registro[$leitor] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$livro] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$inicio] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$fim] . '</td>';
 					echo '</tr>';
 				}
 				echo '</table>';
