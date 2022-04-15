@@ -32,7 +32,7 @@
     <div style="max-width: 800px; margin: auto;">
         <h1 class="pageTitle">Bibliófilo's</h1>
 
-        <h2>Leituras</h2>
+        <h2>Livros nas bibliotecas</h2>
 		<hr/>
 
         <?php
@@ -40,21 +40,20 @@
 
 			$conexao = RetornaConexao();
 
-			$leitor = 'leitor';
 			$livro = 'livro';
-			$inicio = 'inicio';
-			$fim = 'fim';
+			$biblioteca = 'biblioteca';
+			$leitor = 'leitor';
 
 			$sql = '
 				select
-					leitor.nome as leitor,
 					livro.titulo as livro,
-					leitura.data_inicio as inicio,
-					leitura.data_fim as fim
-				from leitura
-					inner join leitor on leitura.leitor_id = leitor.id
-					inner join livro on leitura.livro_id = livro.id
-				order by leitor.id;
+					biblioteca.nome as biblioteca,
+					leitor.nome as leitor
+				from livro_em_biblioteca
+					inner join biblioteca on livro_em_biblioteca.biblioteca_id = biblioteca.id
+					inner join livro on livro_em_biblioteca.livro_id = livro.id
+					inner join leitor on biblioteca.leitor_id = leitor.id
+				order by biblioteca.id;
 			';
 
 			$resultado = mysqli_query($conexao, $sql);
@@ -64,10 +63,9 @@
 			$cabecalho =
 				'<table style="width: 100%;">' .
 				'    <tr style="text-align: left; height: 36px; vertical-align: baseline;">' .
-				'        <th><span class="whiteMode pillText">' . $leitor . '</span></th>' .
 				'        <th><span class="whiteMode pillText">' . $livro . '</span></th>' .
-				'        <th><span class="whiteMode pillText">' . $inicio . '</span></th>' .
-				'        <th><span class="whiteMode pillText">' . $fim . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $biblioteca . '</span></th>' .
+				'        <th><span class="whiteMode pillText">' . $leitor . '</span></th>' .
 				'    </tr>';
 
 			echo $cabecalho;
@@ -77,10 +75,9 @@
 				while ($registro = mysqli_fetch_assoc($resultado)) {
 					echo '<tr>';
 
-					echo '<td style="padding-left: 8px;">' . $registro[$leitor] . '</td>' .
-						'<td style="padding-left: 8px;">' . $registro[$livro] . '</td>' .
-						'<td style="padding-left: 8px;">' . $registro[$inicio] . '</td>' .
-						'<td style="padding-left: 8px;">' . $registro[$fim] . '</td>';
+					echo '<td style="padding-left: 8px;">' . $registro[$livro] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$biblioteca] . '</td>' .
+						'<td style="padding-left: 8px;">' . $registro[$leitor] . '</td>' ;
 					echo '</tr>';
 				}
 				echo '</table>';

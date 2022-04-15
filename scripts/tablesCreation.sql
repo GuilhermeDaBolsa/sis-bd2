@@ -20,13 +20,13 @@ CREATE TABLE livro(
 	titulo                	VARCHAR(100),
 	data_publicacao 		DATE,
     classificacao_etaria    INT,
-    autor               	BIGINT,
-    editora             	BIGINT,
-    genero              	BIGINT,
+    autor_id               	BIGINT,
+    editora_id             	BIGINT,
+    genero_id              	BIGINT,
     
-    CONSTRAINT autor_fk FOREIGN KEY(autor) REFERENCES autor(id),
-    CONSTRAINT editora_fk FOREIGN KEY(editora) REFERENCES editora(id),
-    CONSTRAINT genero_fk FOREIGN KEY(genero) REFERENCES genero(id)
+    CONSTRAINT livro_autor_fk FOREIGN KEY(autor_id) REFERENCES autor(id),
+    CONSTRAINT livro_editora_fk FOREIGN KEY(editora_id) REFERENCES editora(id),
+    CONSTRAINT livro_genero_fk FOREIGN KEY(genero_id) REFERENCES genero(id)
 );
 
 
@@ -36,22 +36,48 @@ CREATE TABLE leitor(
 	data_nascimento 		DATE
 );
 
+CREATE TABLE leitor_possui_livro(
+	leitor_id				BIGINT,
+    livro_id				BIGINT,
+    
+    PRIMARY KEY(leitor_id, livro_id),
+    CONSTRAINT leitor_possui_livro_leitor_fk FOREIGN KEY(leitor_id) REFERENCES leitor(id),
+    CONSTRAINT leitor_possui_livro_livro_fk FOREIGN KEY(livro_id) REFERENCES livro(id)
+);
+
 CREATE TABLE leitura(
 	id						BIGINT PRIMARY KEY AUTO_INCREMENT,
-	id_leitor				BIGINT,
-    id_livro				BIGINT,
+	leitor_id				BIGINT,
+    livro_id				BIGINT,
     data_inicio 			DATE,
     data_fim	 			DATE,
     
-    CONSTRAINT leitor_fk FOREIGN KEY(id_leitor) REFERENCES leitor(id),
-    CONSTRAINT livro_fk FOREIGN KEY(id_livro) REFERENCES livro(id)
+    CONSTRAINT leitura_leitor_fk FOREIGN KEY(leitor_id) REFERENCES leitor(id),
+    CONSTRAINT leitura_livro_fk FOREIGN KEY(livro_id) REFERENCES livro(id)
 );
 
 CREATE TABLE amizade(
-	id_leitor_follower		BIGINT,
-    id_leitor_followed		BIGINT,
+	leitor_follower_id		BIGINT,
+    leitor_followed_id		BIGINT,
     
-    PRIMARY KEY(id_leitor_follower, id_leitor_followed),
-    CONSTRAINT leitor_follower_fk FOREIGN KEY(id_leitor_follower) REFERENCES leitor(id),
-    CONSTRAINT leitor_followed_fk FOREIGN KEY(id_leitor_followed) REFERENCES leitor(id)
+    PRIMARY KEY(leitor_follower_id, leitor_followed_id),
+    CONSTRAINT leitor_follower_fk FOREIGN KEY(leitor_follower_id) REFERENCES leitor(id),
+    CONSTRAINT leitor_followed_fk FOREIGN KEY(leitor_followed_id) REFERENCES leitor(id)
+);
+
+CREATE TABLE biblioteca(
+	id						BIGINT PRIMARY KEY AUTO_INCREMENT,
+	nome                	VARCHAR(255),
+    leitor_id              	BIGINT,
+    
+    CONSTRAINT biblioteca_leitor_fk FOREIGN KEY(leitor_id) REFERENCES leitor(id)
+);
+
+CREATE TABLE livro_em_biblioteca(
+	biblioteca_id			BIGINT,
+    livro_id				BIGINT,
+    
+    PRIMARY KEY(biblioteca_id, livro_id),
+    CONSTRAINT livro_em_biblioteca_biblioteca_fk FOREIGN KEY(biblioteca_id) REFERENCES biblioteca(id),
+    CONSTRAINT livro_em_biblioteca_livro_fk FOREIGN KEY(livro_id) REFERENCES leitor(id)
 );

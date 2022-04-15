@@ -48,9 +48,9 @@
 					follower.nome as follower,
 					followed.nome as followed
 				from amizade
-					inner join leitor as follower on id_leitor_follower = follower.id
-					inner join leitor as followed on id_leitor_followed = followed.id
-				order by follower
+					inner join leitor as follower on leitor_follower_id = follower.id
+					inner join leitor as followed on leitor_followed_id = followed.id
+				order by follower;
 			';
 
 			$resultado = mysqli_query($conexao, $sql);

@@ -29,7 +29,7 @@
 </head>
 	
 <body class="darkMode">
-    <div style="max-width: 800px; margin: auto;">
+    <div style="max-width: 850px; margin: auto;">
         <h1 class="pageTitle">Bibliófilo's</h1>
 
         <h2>Livros</h2>
@@ -56,9 +56,9 @@
 					genero.nome as genero,
 					classificacao_etaria as classificacao
 				from livro
-					inner join autor on livro.autor = autor.id
-					inner join editora on livro.editora = editora.id
-					inner join genero on livro.genero = genero.id
+					inner join autor on livro.autor_id = autor.id
+					inner join editora on livro.editora_id = editora.id
+					inner join genero on livro.genero_id = genero.id;
 			';
 
 			$resultado = mysqli_query($conexao, $sql);
