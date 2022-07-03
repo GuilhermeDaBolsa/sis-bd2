@@ -9,6 +9,11 @@ campos relacionados à outras tabelas estão escritos da seguinte forma: tabela_
 chaves estrangeiras são escritas da seguinte forma tabela_pai_tabela_filha_fk
 
 
+A arquitetura do banco pode ser visualizada na imagem abaixo (UMLdump.jpg na pasta scripts):
+
+![image](https://user-images.githubusercontent.com/39105309/177023594-87e54a37-fc77-4d31-a8dc-475d99806c24.png)
+
+
 # Stored Objects
 
 O arquivo storedObject.sql (na pasta scripts) contém a criação de todas as Stored Objects requeridas para o trabalho, além disso, há também o novo DUMP do banco depois do exercício.
