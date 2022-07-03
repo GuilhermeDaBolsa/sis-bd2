@@ -79,5 +79,5 @@ CREATE TABLE livro_em_biblioteca(
     
     PRIMARY KEY(biblioteca_id, livro_id),
     CONSTRAINT livro_em_biblioteca_biblioteca_fk FOREIGN KEY(biblioteca_id) REFERENCES biblioteca(id),
-    CONSTRAINT livro_em_biblioteca_livro_fk FOREIGN KEY(livro_id) REFERENCES leitor(id)
+    CONSTRAINT livro_em_biblioteca_livro_fk FOREIGN KEY(livro_id) REFERENCES livro(id)
 );
