@@ -1,4 +1,6 @@
-# sis-bd2
+# sis-bd2 (School Project)
+
+(It is just a small DB MySql project)
 
 Os padrões das tabelas são:
 
